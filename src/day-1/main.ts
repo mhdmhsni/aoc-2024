@@ -1,12 +1,7 @@
 import fs from 'fs';
 
 const parseInputFile = (): string => {
-   return fs.readFileSync('./input-1.txt', 'utf8');
-}
-
-
-const findMinimum = (array: number[]): number => {
-    return array.reduce((a, b) => (a < b ? a : b));
+   return fs.readFileSync('./input.txt', 'utf8');
 }
 
 const sortAscending = (array: number[]): number[] => {

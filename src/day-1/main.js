@@ -5,10 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const parseInputFile = () => {
-    return fs_1.default.readFileSync('./input-1.txt', 'utf8');
-};
-const findMinimum = (array) => {
-    return array.reduce((a, b) => (a < b ? a : b));
+    return fs_1.default.readFileSync('./input.txt', 'utf8');
 };
 const sortAscending = (array) => {
     return array.sort((a, b) => a - b);
@@ -25,9 +22,6 @@ const separateLeftAndRightLists = (parsedInputFile) => {
     });
     return { leftList, rightList };
 };
-const calculateTheSimilarityScore = (leftList, rightList) => {
-    return 0;
-};
 const findTheDistances = (leftList, rightList) => {
     const sortedLeftList = sortAscending(leftList);
     const sortedRightList = sortAscending(rightList);
@@ -39,6 +33,19 @@ const findTheDistances = (leftList, rightList) => {
         distances.push(Math.abs(left - right));
     }
     return distances.reduce((a, b) => a + b);
+};
+const calculateTheSimilarityScore = (leftList, rightList) => {
+    const numberOfAppearances = [];
+    for (let i = 0; i < leftList.length; i++) {
+        const currentNumber = leftList[i];
+        let count = 0;
+        rightList.forEach((item) => {
+            if (item === currentNumber)
+                count++;
+        });
+        numberOfAppearances.push(currentNumber * count);
+    }
+    return numberOfAppearances.reduce((a, b) => a + b);
 };
 const main = () => {
     const inputFile = parseInputFile();
