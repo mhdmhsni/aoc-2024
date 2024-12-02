@@ -1,5 +1,9 @@
 {
+  "scripts": {
+    "build": "tsc"
+  },
   "devDependencies": {
+    "@types/node": "^22.10.1",
     "typescript": "^5.7.2"
   }
 }
