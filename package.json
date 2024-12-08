@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "tsc",
-    "start": "node src/2024/day-7/main.js"
+    "start": "node src/2024/day-8/main.js"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
