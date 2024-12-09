@@ -89,7 +89,6 @@ function defrag(arr: string[], size: number[], loc: number[]): string[] {
 }
 
 function calcChecksum(memoryMap: string[]): number {
-  //   return arr.reduce((acc, val, i) => (val !== null ? acc! + i * val : acc), 0);
   let r = 0;
   for (let i = 0; i < memoryMap.length; i++) {
     const number = parseInt(memoryMap[i]);
