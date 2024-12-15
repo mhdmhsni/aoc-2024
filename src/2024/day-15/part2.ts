@@ -60,7 +60,7 @@ const move = (direction: [number, number]) => {
 }
 
 
-const part1 = () => {
+const part2 = () => {
     console.time('day 15 part 1')
 
     for (let instruction of instructions) {
@@ -82,4 +82,4 @@ const part1 = () => {
 }
 
 
-part1();
+part2();
