@@ -144,7 +144,7 @@ const main = () => {
 
   const input = fs.readFileSync(__dirname + "/input.txt", "utf-8");
   const inputSplit = input.split("\n\n");
-  const registersArray = inputSplit[0].split("\n").forEach((line) => {
+  inputSplit[0].split("\n").forEach((line) => {
     const splitByColon = line.split(":");
     const register = splitByColon[0].split(" ")[1].toString() as Register;
     const value = parseInt(splitByColon[1].trim());
