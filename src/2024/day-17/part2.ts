@@ -142,6 +142,10 @@ const runProgram = (
   return outputs;
 };
 
+/**
+ * For part 2, knowing that every time 3 bits of A is used, we can work from the last program output to determine the leading bits,
+ * and then search via leading bits + [000 - 111] iteratively until the program length is matched.
+ */
 const findA = (
   registers: Record<Register, number>,
   program: number[]
@@ -156,7 +160,7 @@ const findA = (
     }
     const from = parseInt(q.result + "000", 2);
     const to = parseInt(q.result + "111", 2);
-    const expect = program.slice((q.len + 1) * -1).join(",");
+    const expect = program.slice((q.len + 1) * -1).join(","); // that -1 is because we need to take a reverse slice (starting from the end)
     for (let a = from; a <= to; a++) {
       const r = runProgram({ ...registers, A: a }, program);
       if (r.join(",") === expect) {
