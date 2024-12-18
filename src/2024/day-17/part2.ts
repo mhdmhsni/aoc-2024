@@ -1,6 +1,6 @@
 import fs from "fs";
 
-const TAG = "day 17 - part 1";
+const TAG = "day 17 - part 2";
 type Register = "A" | "B" | "C";
 
 const getComboValue = (
