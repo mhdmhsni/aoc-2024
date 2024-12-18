@@ -1,6 +1,6 @@
 import fs from "fs";
 
-const TAG = "day 18 - part 1";
+const TAG = "day 18 - part 2";
 
 type Point = {
   x: number;
@@ -131,17 +131,29 @@ const main = () => {
 
   let pathFound = true;
   let corruptedTilesNumber = 1024;
+  let lastFoundPath: Point[] | null = [];
   while (pathFound) {
-    const validCorruptedTiles = corrupted.slice(0, corruptedTilesNumber);
+    const newCorruptedTile = corrupted[corruptedTilesNumber - 1];
+    const index = lastFoundPath.findIndex(
+      (el) => el.x === newCorruptedTile.x && el.y === newCorruptedTile.y
+    );
+    if (lastFoundPath.length > 0 && index === -1) {
+      corruptedTilesNumber++;
+      continue;
+    }
 
+    const validCorruptedTiles = corrupted.slice(0, corruptedTilesNumber);
     const grid: Grid = {
       width: cols,
       height: rows,
       grid: getCorruptedGrid(INITIAL_GRID, validCorruptedTiles),
     };
+
     const r = dijkstra(grid);
-    if (r) corruptedTilesNumber++;
-    else {
+    if (r) {
+      lastFoundPath = r;
+      corruptedTilesNumber++;
+    } else {
       pathFound = false;
       console.log(validCorruptedTiles[validCorruptedTiles.length - 1]);
     }
